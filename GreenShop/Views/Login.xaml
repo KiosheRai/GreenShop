@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:GreenShop.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="800" Background="AliceBlue"
       Title="Login">
 
     <Grid>
@@ -20,13 +20,16 @@
         </Grid.ColumnDefinitions>
 
 
-        <Label Grid.Column="1" Content="Вход" HorizontalAlignment="Center"/>
+        <Label Grid.Column="1" Content="Log in" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <Label Content="Логин"/>
-            <TextBox></TextBox>
-            <Label Content="Пароль"/>
-            <TextBox></TextBox>
-            <Button Content="Войти"/>
+            <Label Content="Login"/>
+            <TextBox x:Name="TextBoxLogin" Margin="6, 0"/>
+            <Label Content="Password"/>
+            <TextBox x:Name="TextBoxPassword" Margin="6, 0"/>
+            <Button Content="Enter" Margin="60, 10" Background="AntiqueWhite" Template="{DynamicResource ButtonBlur}"/>
+            <Button Content="Registration" Margin="60, 10" Background="AntiqueWhite"/>
+            <Button Content="Continue with no registration" Margin="60, 10" Background="AntiqueWhite"/>
         </StackPanel>
     </Grid>
+
 </Page>
