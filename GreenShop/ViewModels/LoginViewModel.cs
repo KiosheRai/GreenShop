@@ -12,6 +12,7 @@ namespace GreenShop.ViewModels
         private IMessenger _messanger;
 
         private RelayCommand loginCommand = null;
+        private RelayCommand registrationCommand = null;
 
         private string login;
         private string password;
@@ -59,5 +60,10 @@ namespace GreenShop.ViewModels
 
             IsEnable = isCorrect;
         }
+
+        public RelayCommand RegistrationCommand => registrationCommand ??= new RelayCommand(() =>
+        {
+            _messanger.Send(new NavigationMessage { ViewModelType = typeof(RegisterViewModel) });
+        });
     }
 }
