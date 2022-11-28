@@ -1,6 +1,4 @@
-﻿using GreenShop.DataContext;
-using GreenShop.Views;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,21 +13,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GreenShop
+namespace GreenShop.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Login.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Login : Page
     {
-        public MainWindow()
+        public Login()
         {
             InitializeComponent();
-
-            GreenShopDbContext context = new GreenShopDbContext();
-            DbInitializer.Initialize(context);
-            
-            PageFrame.Content = new Login();
+            //NavigationService.Navigate(new Uri("/Login.xaml", UriKind.Relative));
         }
     }
 }
