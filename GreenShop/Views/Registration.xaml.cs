@@ -16,15 +16,13 @@ using System.Windows.Shapes;
 namespace GreenShop.Views
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Логика взаимодействия для Registration.xaml
     /// </summary>
-    public partial class Login : Page
+    public partial class Registration : Page
     {
-        public Login()
+        public Registration()
         {
             InitializeComponent();
-            //NavigationService.Navigate(new Uri("/Login.xaml", UriKind.Relative));
-            
         }
     }
 }
