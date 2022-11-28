@@ -15,7 +15,9 @@ namespace GreenShop.DataContext
         public DbSet<GoodsList> GoodsLists { get; set; }
 
         public GreenShopDbContext()
-            : base() { }
+        {
+            Database.EnsureCreated();
+        }
 
         protected override void OnConfiguring(
             DbContextOptionsBuilder optionsBuilder)

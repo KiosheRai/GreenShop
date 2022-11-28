@@ -26,9 +26,7 @@ namespace GreenShop
         {
             InitializeComponent();
 
-            GreenShopDbContext context = new GreenShopDbContext();
-            DbInitializer.Initialize(context);
-            
+            DataContext = new GreenShopDbContext();
             PageFrame.Content = new Login();
         }
     }
