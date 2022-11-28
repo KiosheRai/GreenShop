@@ -5,13 +5,19 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:GreenShop.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800" Background="AliceBlue"
-      Title="Login">
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Login" >
+
+    <Page.Background>
+        <ImageBrush ImageSource="/Views/eco_intro.jpg" Opacity="0.5"/>
+    </Page.Background>
 
     <Grid>
+
         <Grid.RowDefinitions>
+            <RowDefinition Height="60px"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="40px"/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -19,17 +25,17 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
+        <Label Grid.Column="1" Content="Log in" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Background="AliceBlue" BorderThickness="1" BorderBrush="Black" Width="380" Margin="5"/>
 
-        <Label Grid.Column="1" Content="Log in" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <Label Content="Login"/>
+
+            <Label Content="Login" FontSize="15" />
             <TextBox x:Name="TextBoxLogin" Margin="6, 0"/>
-            <Label Content="Password"/>
+            <Label Content="Password" FontSize="15"/>
             <TextBox x:Name="TextBoxPassword" Margin="6, 0"/>
-            <Button Content="Enter" Margin="60, 10" Background="AntiqueWhite" Template="{DynamicResource ButtonBlur}"/>
-            <Button Content="Registration" Margin="60, 10" Background="AntiqueWhite"/>
-            <Button Content="Continue with no registration" Margin="60, 10" Background="AntiqueWhite"/>
+            <Button Content="Enter" Style="{DynamicResource BasicButton}"/>
+            <Button Content="Registration" Style="{DynamicResource BasicButton}"/>
+            <Button Content="Continue with no registration" Style="{DynamicResource BasicButton}"/>
         </StackPanel>
     </Grid>
-
 </Page>
