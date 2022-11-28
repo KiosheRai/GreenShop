@@ -34,6 +34,7 @@ namespace GreenShop
             Services.RegisterSingleton<IMessenger, Messenger>();
             Services.RegisterSingleton<MainViewModel>();
             Services.RegisterSingleton<LoginViewModel>();
+            Services.RegisterSingleton<RegisterViewModel>();
 
             Services.Verify();
         }

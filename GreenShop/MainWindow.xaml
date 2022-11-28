@@ -7,7 +7,11 @@
         mc:Ignorable="d"
         
         Title="GreenShop" Height="450" Width="800">
-    <Frame x:Name="PageFrame" NavigationUIVisibility="Hidden">
+    <Grid>
+        <ContentControl Content="{Binding CurrentViewModel}"/>
+    </Grid>
+    <!--<Frame x:Name="PageFrame" NavigationUIVisibility="Hidden">
 
-    </Frame>
+    </Frame>-->
+    
 </Window>

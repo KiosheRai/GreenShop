@@ -1,15 +1,15 @@
-﻿<Page x:Class="GreenShop.Views.Registration"
+﻿<UserControl x:Class="GreenShop.Views.Registration"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:GreenShop.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="Registration">
-    <Page.Background>
+      d:DesignHeight="450" d:DesignWidth="800">
+    
+    <UserControl.Background>
         <ImageBrush ImageSource="/Views/eco_intro.jpg" Opacity="0.5"/>
-    </Page.Background>
+    </UserControl.Background>
 
 
     <Grid>
@@ -26,23 +26,48 @@
 
 
         <Label Grid.Column="1" Content="Registration" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+        
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <Label Content="Login"/>
-            <TextBox x:Name="TextBoxLogin" Margin="6, 0"/>
-            <Label Content="Password"/>
-            <TextBox x:Name="TextBoxPassword" Margin="6, 0"/>
-            <Label Content="Confirm password"/>
-            <TextBox x:Name="TextBoxPasswordConfirm" Margin="6, 0"/>
-            <Label Content="Email"/>
-            <TextBox x:Name="TextBoxEmail" Margin="6, 0"/>
-            <Label Content="Phone Number"/>
-            <TextBox x:Name="TextBoxPhoneNumber" Margin="6, 0"/>
-            <Label Content="Address"/>
-            <TextBox x:Name="TextBoxAddress" Margin="6, 0"/>
-            <Button Content="Continue" Margin="60, 10" Background="AntiqueWhite"/>
-            <Button Content="Already have an account?" Margin="60, 10" Background="AntiqueWhite"/>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Login"/>
+                <Label Content="!" Foreground="Red" Visibility="{Binding ViaLogin, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+        <TextBox x:Name="TextBoxLogin" Margin="6, 0"/>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Password"/>
+                <Label Content="!" Foreground="Red" Visibility="{Binding ViaPassword}"/>
+            </StackPanel>
+        <TextBox x:Name="TextBoxPassword" Margin="6, 0"/>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Confirm password"/>
+                <Label Content="!" Foreground="Red" Visibility="{Binding ViaPasswordConfirm}"/>
+            </StackPanel>
+        <TextBox x:Name="TextBoxPasswordConfirm" Margin="6, 0"/>
+            
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Email"/>
+                <Label Content="!" Foreground="Red" Visibility="{Binding ViaEmail}"/>
+            </StackPanel>
+        <TextBox x:Name="TextBoxEmail" Margin="6, 0"/>
+        
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Phone Number"/>
+                <Label Content="!" Foreground="Red" Visibility="{Binding ViaPhone}"/>
+            </StackPanel>
+        <TextBox x:Name="TextBoxPhoneNumber" Margin="6, 0"/>
+        
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Address"/>
+                <Label Content="!" Foreground="Red" Visibility="{Binding ViaAddress}"/>
+            </StackPanel>
+            
+        <TextBox x:Name="TextBoxAddress" Margin="6, 0"/>
+        <Button Content="Continue" IsEnabled="{Binding IsEnable}" Margin="60, 10" Background="AntiqueWhite"/>
+        <Button Content="Already have an account?" Margin="60, 10" Background="AntiqueWhite"/>
 
         </StackPanel>
     </Grid>
 
-</Page>
+</UserControl>

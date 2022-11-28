@@ -1,13 +1,24 @@
 ﻿<Application x:Class="GreenShop.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:GreenShop"
-             StartupUri="MainWindow.xaml">
+             xmlns:local="clr-namespace:GreenShop" 
+             xmlns:viewModels="clr-namespace:GreenShop.ViewModels"
+             xmlns:views="clr-namespace:GreenShop.Views">
+    
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Views/Styles/WindowStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewModels:LoginViewModel}">
+                <views:Login/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModels:RegisterViewModel}">
+                <views:Registration/>
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

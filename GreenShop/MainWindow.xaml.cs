@@ -25,9 +25,6 @@ namespace GreenShop
         public MainWindow()
         {
             InitializeComponent();
-
-            DataContext = new GreenShopDbContext();
-            PageFrame.Content = new Login();
         }
     }
 }
