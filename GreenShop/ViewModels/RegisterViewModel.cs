@@ -34,6 +34,7 @@ namespace GreenShop.ViewModels
         public Visibility ViaPassword { get; set; }
         public Visibility ViaPasswordConfirm { get; set; }
         public Visibility ViaAddress { get; set; }
+        public Visibility ViaError { get; set; }
 
         public string Login
         {
@@ -81,7 +82,12 @@ namespace GreenShop.ViewModels
         {
             if (_manager.IsUserExists(login))
             {
-                MessageBox.Show("User already exists");
+                ViaError = Visibility.Visible;
+                return;
+            }
+            else
+            {
+                ViaError = Visibility.Collapsed;
             }
 
             User user = new User
@@ -175,6 +181,7 @@ namespace GreenShop.ViewModels
             address = string.Empty;
             phone = string.Empty;
             IsEnable = false;
+            ViaError = Visibility.Hidden;
         }
 
         public RelayCommand LoginCommand => loginCommand ??= new RelayCommand(() =>

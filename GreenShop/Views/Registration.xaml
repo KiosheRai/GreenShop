@@ -78,6 +78,10 @@
                      MaxLength="40"
                      Margin="6, 0" Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}"/>
 
+            <Label Content="User already exists"
+                   Foreground="Red" 
+                   Visibility="{Binding ViaError}"
+                   HorizontalAlignment="Center"/>
         <Button Content="Continue" Command="{Binding RegistrationCommand}" IsEnabled="{Binding IsEnable}" Margin="60, 10" Background="AntiqueWhite"/>
         <Button Content="Already have an account?" Margin="60, 10" Background="AntiqueWhite"/>
 
