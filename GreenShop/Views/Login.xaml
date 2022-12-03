@@ -31,7 +31,7 @@
             <Label Content="Login" FontSize="15" />
             
             <TextBox x:Name="TextBoxLogin" Margin="6, 0"/>
-                
+               
             <Label Content="Password" FontSize="15"/>
             <TextBox x:Name="TextBoxPassword" Margin="6, 0"/>
             <Button Content="Enter" Style="{DynamicResource BasicButton}" Command="{Binding LoginCommand}"/>

@@ -2,8 +2,9 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:GreenShop.Views"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:to="http://schemas.xceed.com/wpf/xaml/toolkit" 
+      xmlns:th="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800">
     
@@ -30,41 +31,54 @@
         <StackPanel Grid.Row="1" Grid.Column="1">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Login"/>
-                <Label Content="!" Foreground="Red" Visibility="{Binding ViaLogin, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Content="!" Foreground="Red" Visibility="{Binding ViaLogin}"/>
             </StackPanel>
-        <TextBox x:Name="TextBoxLogin" Margin="6, 0"/>
+            <TextBox x:Name="TextBoxLogin" 
+                     MaxLength="40"
+                     Margin="6, 0" Text="{Binding Login, UpdateSourceTrigger=PropertyChanged }"/>
 
             <StackPanel Orientation="Horizontal">
                 <Label Content="Password"/>
                 <Label Content="!" Foreground="Red" Visibility="{Binding ViaPassword}"/>
             </StackPanel>
-        <TextBox x:Name="TextBoxPassword" Margin="6, 0"/>
+            <TextBox x:Name="TextBoxPassword"
+                     MaxLength="40"
+                     Margin="6, 0" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"/>
 
             <StackPanel Orientation="Horizontal">
                 <Label Content="Confirm password"/>
                 <Label Content="!" Foreground="Red" Visibility="{Binding ViaPasswordConfirm}"/>
             </StackPanel>
-        <TextBox x:Name="TextBoxPasswordConfirm" Margin="6, 0"/>
+            <TextBox x:Name="TextBoxPasswordConfirm"
+                     MaxLength="40"
+                     Margin="6, 0" Text="{Binding PasswordConfirm, UpdateSourceTrigger=PropertyChanged}"/>
             
             <StackPanel Orientation="Horizontal">
                 <Label Content="Email"/>
                 <Label Content="!" Foreground="Red" Visibility="{Binding ViaEmail}"/>
             </StackPanel>
-        <TextBox x:Name="TextBoxEmail" Margin="6, 0"/>
+            <TextBox x:Name="TextBoxEmail"
+                     MaxLength="40"
+                     Margin="6, 0" Text="{Binding Email}"/>
         
             <StackPanel Orientation="Horizontal">
                 <Label Content="Phone Number"/>
                 <Label Content="!" Foreground="Red" Visibility="{Binding ViaPhone}"/>
             </StackPanel>
-        <TextBox x:Name="TextBoxPhoneNumber" Margin="6, 0"/>
+            <TextBox x:Name="TextBoxPhoneNumber"
+                     Margin="6, 0"
+                     MaxLength="13" 
+                     Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged}"/>
         
             <StackPanel Orientation="Horizontal">
                 <Label Content="Address"/>
                 <Label Content="!" Foreground="Red" Visibility="{Binding ViaAddress}"/>
             </StackPanel>
-            
-        <TextBox x:Name="TextBoxAddress" Margin="6, 0"/>
-        <Button Content="Continue" IsEnabled="{Binding IsEnable}" Margin="60, 10" Background="AntiqueWhite"/>
+            <TextBox x:Name="TextBoxAddress" 
+                     MaxLength="40"
+                     Margin="6, 0" Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Button Content="Continue" Command="{Binding RegistrationCommand}" IsEnabled="{Binding IsEnable}" Margin="60, 10" Background="AntiqueWhite"/>
         <Button Content="Already have an account?" Margin="60, 10" Background="AntiqueWhite"/>
 
         </StackPanel>

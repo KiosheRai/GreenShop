@@ -5,11 +5,13 @@ using GreenShop.Messages;
 using GreenShop.Models;
 using GreenShop.Service;
 using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows;
 
 namespace GreenShop.ViewModels
 {
-    public class RegisterViewModel : ViewModelBase
+    public class RegisterViewModel : ViewModelBase, INotifyPropertyChanged
     {
         private readonly GreenShopManager _manager;
         private IMessenger _messanger;
@@ -69,14 +71,17 @@ namespace GreenShop.ViewModels
             set { address = value; Validate(); }
         }
 
-        public RegisterViewModel(IMessenger messanger, GreenShopManager manager) =>
-            (_messanger, _manager) = (_messanger, manager);
+        public RegisterViewModel(IMessenger messanger, GreenShopManager manager)
+        {
+            (_messanger, _manager) = (messanger, manager);
+            Clear();
+        }
 
         public RelayCommand RegistrationCommand => registrationCommand ??= new RelayCommand( () =>
         {
             if (_manager.IsUserExists(login))
             {
-                throw new Exception();
+                MessageBox.Show("User already exists");
             }
 
             User user = new User
@@ -91,13 +96,14 @@ namespace GreenShop.ViewModels
             _manager.RegisterUser(user);
 
             _messanger.Send(new NavigationMessage() { ViewModelType = typeof(LoginViewModel) });
+            Clear();
         });
 
         private void Validate()
         {
             bool isCorrect = true;
 
-            if (login.Trim().Length < 5)
+            if (Login.Trim().Length < 5)
             {
                 ViaLogin = Visibility.Visible;
                 isCorrect = false;
@@ -117,7 +123,7 @@ namespace GreenShop.ViewModels
                 ViaPhone = Visibility.Collapsed;
             }
 
-            if (email != String.Empty && !Validator.IsEmail(email))
+            if (email != string.Empty && !Validator.IsEmail(email))
             {
                 ViaEmail = Visibility.Visible;
                 isCorrect = false;
@@ -147,7 +153,7 @@ namespace GreenShop.ViewModels
                 ViaPasswordConfirm = Visibility.Collapsed;
             }
 
-            if (address != String.Empty)
+            if (address == string.Empty)
             {
                 ViaAddress = Visibility.Visible;
                 isCorrect = false;
@@ -160,9 +166,21 @@ namespace GreenShop.ViewModels
             IsEnable = isCorrect;
         }
 
-       public RelayCommand LoginCommand => loginCommand ??= new RelayCommand(() =>
-       {
-           _messanger.Send(new NavigationMessage() { ViewModelType = typeof(LoginViewModel) });
-       });
+        private void Clear()
+        {
+            phone = string.Empty;
+            password = string.Empty;
+            passwordConfirm = string.Empty;
+            email = string.Empty;
+            address = string.Empty;
+            phone = string.Empty;
+            IsEnable = false;
+        }
+
+        public RelayCommand LoginCommand => loginCommand ??= new RelayCommand(() =>
+        {
+            _messanger.Send(new NavigationMessage() { ViewModelType = typeof(LoginViewModel) });
+            Clear();
+        });
     }
 }

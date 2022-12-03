@@ -3,6 +3,8 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using GreenShop.Messages;
 using GreenShop.Service;
+using System;
+using System.Windows;
 
 namespace GreenShop.ViewModels
 {
@@ -16,6 +18,9 @@ namespace GreenShop.ViewModels
 
         private string login;
         private string password;
+
+        public Visibility ViaLogin { get; set; }
+        public Visibility ViaPassword { get; set; }
 
         public bool IsEnable { get; set; }
 
@@ -31,12 +36,15 @@ namespace GreenShop.ViewModels
             set { password = value; Check(); }
         }
 
-        public LoginViewModel(GreenShopManager manager, IMessenger messenger) =>
+        public LoginViewModel(GreenShopManager manager, IMessenger messenger)
+        {
             (_manager, _messanger) = (manager, messenger);
+            Clear();
+        }
 
         public RelayCommand LoginCommand => loginCommand ??= new RelayCommand(() =>
         {
-            var user = _manager.GetUserWithPassword(login, password);
+            var user = _manager.GetUserWithPassword(Login, Password);
 
             if(user == null)
             {
@@ -52,13 +60,34 @@ namespace GreenShop.ViewModels
         {
             bool isCorrect = true;
 
-            if (login.Trim() == string.Empty)
+            if (string.IsNullOrEmpty(Login))
+            {
                 isCorrect = false;
+                ViaLogin = Visibility.Visible;
+            }
+            else
+            {
+                ViaLogin = Visibility.Collapsed;
+            }
+                
 
-            if (password.Trim() == string.Empty)
+            if (string.IsNullOrEmpty(Password))
+            {
                 isCorrect = false;
+                ViaPassword = Visibility.Visible;
+            }
+            else
+            {
+                ViaPassword = Visibility.Collapsed;
+            }
 
             IsEnable = isCorrect;
+        }
+
+        private void Clear()
+        {
+            login = string.Empty;
+            password = string.Empty;
         }
 
         public RelayCommand RegistrationCommand => registrationCommand ??= new RelayCommand(() =>
