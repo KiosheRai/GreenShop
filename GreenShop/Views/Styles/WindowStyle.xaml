@@ -12,6 +12,16 @@
         <Setter Property="FontSize" Value="15"/>
     </Style>
 
+    <Style TargetType="TextBox">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderBrush" Value="Gray"/>
+    </Style>
+
+    <Style TargetType="Label">
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+    
+
     <ControlTemplate x:Key="ButtonBlur" TargetType="Button">
         <Border Name="Border" 
             BorderBrush="Orange" 

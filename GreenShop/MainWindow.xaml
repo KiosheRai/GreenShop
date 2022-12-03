@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:GreenShop"
         mc:Ignorable="d"
         
-        Title="GreenShop" Height="450" Width="800">
+        Title="GreenShop" Height="700" Width="800" Background="Black">
    
     <Grid>
         <ContentControl Content="{Binding CurrentViewModel}"/>

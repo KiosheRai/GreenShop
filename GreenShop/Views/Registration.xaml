@@ -6,7 +6,7 @@
       xmlns:to="http://schemas.xceed.com/wpf/xaml/toolkit" 
       xmlns:th="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800">
+      d:DesignHeight="950" d:DesignWidth="800">
     
     <UserControl.Background>
         <ImageBrush ImageSource="/Views/eco_intro.jpg" Opacity="0.5"/>
@@ -25,7 +25,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-
+        
         <Label Grid.Column="1" Content="Registration" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
         
         <StackPanel Grid.Row="1" Grid.Column="1">
@@ -33,57 +33,74 @@
                 <Label Content="Login"/>
                 <Label Content="!" Foreground="Red" Visibility="{Binding ViaLogin}"/>
             </StackPanel>
-            <TextBox x:Name="TextBoxLogin" 
-                     MaxLength="40"
+            <TextBox x:Name="TextBoxLogin"  Style="{StaticResource MaterialDesignFilledTextBox}"
+                     MaxLength="40" BorderBrush="Purple" 
+                     Foreground="White"
                      Margin="6, 0" Text="{Binding Login, UpdateSourceTrigger=PropertyChanged }"/>
 
             <StackPanel Orientation="Horizontal">
                 <Label Content="Password"/>
                 <Label Content="!" Foreground="Red" Visibility="{Binding ViaPassword}"/>
             </StackPanel>
-            <TextBox x:Name="TextBoxPassword"
-                     MaxLength="40"
+            <TextBox x:Name="TextBoxPassword" Style="{StaticResource MaterialDesignFilledTextBox}"
+                     MaxLength="40" BorderBrush="Purple" 
+                     Foreground="White"
                      Margin="6, 0" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"/>
 
             <StackPanel Orientation="Horizontal">
                 <Label Content="Confirm password"/>
                 <Label Content="!" Foreground="Red" Visibility="{Binding ViaPasswordConfirm}"/>
             </StackPanel>
-            <TextBox x:Name="TextBoxPasswordConfirm"
-                     MaxLength="40"
+            <TextBox x:Name="TextBoxPasswordConfirm" Style="{StaticResource MaterialDesignFilledTextBox}"
+                     MaxLength="40" BorderBrush="Purple" 
+                     Foreground="White"
                      Margin="6, 0" Text="{Binding PasswordConfirm, UpdateSourceTrigger=PropertyChanged}"/>
             
             <StackPanel Orientation="Horizontal">
                 <Label Content="Email"/>
                 <Label Content="!" Foreground="Red" Visibility="{Binding ViaEmail}"/>
             </StackPanel>
-            <TextBox x:Name="TextBoxEmail"
-                     MaxLength="40"
-                     Margin="6, 0" Text="{Binding Email}"/>
-        
+            <TextBox x:Name="TextBoxEmail" Style="{StaticResource MaterialDesignFilledTextBox}"
+                     MaxLength="40" BorderBrush="Purple" 
+                     Margin="6, 0" Text="{Binding Email}" Foreground="White"/>
+
             <StackPanel Orientation="Horizontal">
                 <Label Content="Phone Number"/>
                 <Label Content="!" Foreground="Red" Visibility="{Binding ViaPhone}"/>
             </StackPanel>
-            <TextBox x:Name="TextBoxPhoneNumber"
-                     Margin="6, 0"
-                     MaxLength="13" 
+            <TextBox Style="{StaticResource MaterialDesignFilledTextBox}"
+                     Margin="6, 0" 
+                     MaxLength="13" BorderBrush="Purple" Foreground="White"
                      Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged}"/>
         
             <StackPanel Orientation="Horizontal">
                 <Label Content="Address"/>
                 <Label Content="!" Foreground="Red" Visibility="{Binding ViaAddress}"/>
             </StackPanel>
-            <TextBox x:Name="TextBoxAddress" 
-                     MaxLength="40"
-                     Margin="6, 0" Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}"/>
-
+            <TextBox x:Name="TextBoxAddress" Style="{StaticResource MaterialDesignFilledTextBox}"
+                     MaxLength="40" BorderBrush="Purple"
+                     Margin="6, 0" Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}" Foreground="White"/>
+    
             <Label Content="User already exists"
                    Foreground="Red" 
                    Visibility="{Binding ViaError}"
                    HorizontalAlignment="Center"/>
-        <Button Content="Continue" Command="{Binding RegistrationCommand}" IsEnabled="{Binding IsEnable}" Margin="60, 10" Background="AntiqueWhite"/>
-        <Button Content="Already have an account?" Margin="60, 10" Background="AntiqueWhite"/>
+        <!--<Button Content="Continue" Command="{Binding RegistrationCommand}" IsEnabled="{Binding IsEnable}" Margin="60, 10" Background="AntiqueWhite"/>
+        <Button Content="Already have an account?" Margin="60, 10" Background="AntiqueWhite"/>-->
+
+            <Button Style="{StaticResource MaterialDesignRaisedButton}"
+        ToolTip="Resource name: MaterialDesignRaisedButton"
+        Content="Continue" Margin="10"
+        Command="{Binding RegistrationCommand}" IsEnabled="{Binding IsEnable}"/>
+            <!--IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />-->
+
+        <Button
+        Style="{StaticResource MaterialDesignRaisedButton}" Margin="10"
+        ToolTip="Resource name: MaterialDesignRaisedButton"
+        Content="Already have an account?" Command="{Binding LoginCommand}"
+        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+        <!--IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}-->
+            
 
         </StackPanel>
     </Grid>
