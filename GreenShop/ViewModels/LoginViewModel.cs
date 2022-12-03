@@ -3,12 +3,12 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using GreenShop.Messages;
 using GreenShop.Service;
-using System;
+using System.ComponentModel;
 using System.Windows;
 
 namespace GreenShop.ViewModels
 {
-    public class LoginViewModel : ViewModelBase
+    public class LoginViewModel : ViewModelBase, INotifyPropertyChanged
     {
         private readonly GreenShopManager _manager;
         private IMessenger _messanger;
@@ -19,6 +19,7 @@ namespace GreenShop.ViewModels
         private string login;
         private string password;
 
+        public Visibility ViaError { get; set; }
         public Visibility ViaLogin { get; set; }
         public Visibility ViaPassword { get; set; }
 
@@ -48,11 +49,15 @@ namespace GreenShop.ViewModels
 
             if(user == null)
             {
-                throw new System.Exception();
+                ViaError = Visibility.Visible;
+                return;
+            }
+            else
+            {
+                ViaError = Visibility.Hidden;
             }
 
             _messanger.Send(new LoginUserMessage() { User = user });
-
             _messanger.Send(new NavigationMessage() { ViewModelType = typeof(RegisterViewModel) });
         });
 
@@ -88,6 +93,7 @@ namespace GreenShop.ViewModels
         {
             login = string.Empty;
             password = string.Empty;
+            ViaError = Visibility.Hidden;
         }
 
         public RelayCommand RegistrationCommand => registrationCommand ??= new RelayCommand(() =>

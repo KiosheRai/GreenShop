@@ -4,9 +4,7 @@ using GalaSoft.MvvmLight.Messaging;
 using GreenShop.Messages;
 using GreenShop.Models;
 using GreenShop.Service;
-using System;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows;
 
 namespace GreenShop.ViewModels

@@ -10,8 +10,6 @@ namespace GreenShop.Views
         public Login()
         {
             InitializeComponent();
-            //NavigationService.Navigate(new Uri("/Login.xaml", UriKind.Relative));
-            
         }
     }
 }

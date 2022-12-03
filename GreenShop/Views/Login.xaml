@@ -29,11 +29,18 @@
         <StackPanel Grid.Row="1" Grid.Column="1">
 
             <Label Content="Login" FontSize="15" />
-            
-            <TextBox x:Name="TextBoxLogin" Margin="6, 0"/>
+            <TextBox x:Name="TextBoxLogin" Margin="6, 0"
+                     Text="{Binding Login}"/>
                
             <Label Content="Password" FontSize="15"/>
-            <TextBox x:Name="TextBoxPassword" Margin="6, 0"/>
+            <TextBox x:Name="TextBoxPassword" Margin="6, 0"
+                     Text="{Binding Password}"/>
+            
+            <Label Content="Аuthorization error"
+                   Foreground="Red"
+                   Visibility="{Binding ViaError}"
+                   HorizontalAlignment="Center"/>
+            
             <Button Content="Enter" Style="{DynamicResource BasicButton}" Command="{Binding LoginCommand}"/>
             <Button Content="Registration" Style="{DynamicResource BasicButton}" Command="{Binding RegistrationCommand}"/>
             

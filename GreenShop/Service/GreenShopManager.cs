@@ -33,8 +33,8 @@ namespace GreenShop.Service
         {
             var user = _context.User.FirstOrDefault(x => x.Login == login);
             if (user == null)
-                return true;
-            return false;
+                return false;
+            return true;
         }
 
         public Role GetDefaultRole()
