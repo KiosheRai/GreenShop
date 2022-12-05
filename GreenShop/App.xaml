@@ -24,7 +24,7 @@
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewModels:StartViewModel}">
-                <views:Start/>
+                <views:Main/>
             </DataTemplate>
 
         </ResourceDictionary>
