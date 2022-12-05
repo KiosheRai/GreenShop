@@ -1,6 +1,7 @@
 ﻿using GreenShop.DataContext;
 using GreenShop.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace GreenShop.Service
@@ -25,13 +26,13 @@ namespace GreenShop.Service
         public User GetUserWithPassword(string login, string password)
         {
             var hashPassword = Hash.Generate(password);
-            var user = _context.User.FirstOrDefault(x => x.Login == login && x.Password == hashPassword);
+            var user = _context.Users.FirstOrDefault(x => x.Login == login && x.Password == hashPassword);
             return user;
         }
 
         public bool IsUserExists(string login)
         {
-            var user = _context.User.FirstOrDefault(x => x.Login == login);
+            var user = _context.Users.FirstOrDefault(x => x.Login == login);
             if (user == null)
                 return false;
             return true;
@@ -39,7 +40,12 @@ namespace GreenShop.Service
 
         public Role GetDefaultRole()
         {
-            return _context.Role.First(x=>x.Id == Guid.Parse("50D40CB8-17C6-4829-9505-5D99AE9E0F66")); ;
+            return _context.Roles.First(x=>x.Id == Guid.Parse("50D40CB8-17C6-4829-9505-5D99AE9E0F66")); ;
+        }
+
+        public List<Good> GetGoods()
+        {
+            return _context.Goods.ToList();
         }
     }
 }
