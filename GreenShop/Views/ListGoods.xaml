@@ -27,30 +27,43 @@
                 <DataTemplate>
                     <Grid Margin="5">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="45"/>
-                            <RowDefinition Height="150"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="90"/>
+                            <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Image Grid.Row="1" Grid.Column="1">
-                            <Image.Source>
-                                <Binding Path="Styles/eco_intro.jpg">
-                                    <Binding.TargetNullValue>
-                                        <ImageSource>Styles/eco_intro.jpg</ImageSource>
-                                    </Binding.TargetNullValue>
-                                </Binding>
-                            </Image.Source>
-                        </Image>
-                        <WrapPanel Grid.Column="0" Grid.Row="0">
-                            <Button Content="Buy" Command="{Binding AddToBasket}" HorizontalAlignment="Left"/>
-                            <TextBlock Text="{Binding Name}" VerticalAlignment="Top" HorizontalAlignment="Right"/>
-                            <TextBlock Text="{Binding Price}" VerticalAlignment="Top" HorizontalAlignment="Right"/>
-                        </WrapPanel>
-                        <StackPanel Grid.Column="0" Grid.Row="1">
-                            <TextBlock Text="{Binding Description}" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                        
+                        <Border Grid.RowSpan="3" BorderThickness="1" BorderBrush="Black">
+                            <Image Source="Styles/eco_intro.jpg"/>
+                        </Border>
+
+                        <TextBlock Grid.Column="1"
+                            Margin="5 0 0 0"
+                            Text="{Binding Name}"
+                            Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
+
+
+                        <TextBlock Grid.Row="1" Grid.Column="1"
+                            Text="{Binding Description}"
+                            Style="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                            Margin="5 0 0 0"/>
+                        
+
+                        <StackPanel Grid.Column="1" Grid.Row="2" 
+                                    Orientation="Horizontal">
+                            <Button Content="Buy" 
+                                Command="{Binding AddToBasket}"
+                                Style="{StaticResource MaterialDesignFlatButton}"/>
+                            <Label Content="{Binding Price}"
+                                Style="{StaticResource MaterialDesignLabel}"
+                                VerticalAlignment="Center"
+                                Height="auto"
+                                   ContentStringFormat="{}{0}$"/>
                         </StackPanel>
+
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
