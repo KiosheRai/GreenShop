@@ -23,6 +23,10 @@
                 <views:Registration/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModels:StartViewModel}">
+                <views:Start/>
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

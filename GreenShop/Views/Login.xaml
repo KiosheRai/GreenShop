@@ -12,7 +12,6 @@
     </UserControl.Background>
 
     <Grid>
-
         <Grid.RowDefinitions>
             <RowDefinition Height="60px"/>
             <RowDefinition Height="*"/>
@@ -24,26 +23,42 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Column="1" Content="Log in" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Background="AliceBlue" BorderThickness="1" BorderBrush="Black" Width="380" Margin="5"/>
+        <Label Grid.Column="1" BorderBrush="AliceBlue" BorderThickness="2" Content="Authorization" 
+               HorizontalContentAlignment="Center" HorizontalAlignment="Center" 
+               VerticalAlignment="Center" FontSize="20" Background="Transparent"
+               Width="380" Margin="5"/>
 
         <StackPanel Grid.Row="1" Grid.Column="1">
 
             <Label Content="Login" FontSize="15" />
-            <TextBox x:Name="TextBoxLogin" Margin="6, 0"
+            <TextBox x:Name="TextBoxLogin" Margin="6, 0" Foreground="White"
+                     Style="{StaticResource MaterialDesignFilledTextBox}"
+                     MaxLength="40" BorderBrush="Wheat" 
                      Text="{Binding Login}"/>
-               
+
             <Label Content="Password" FontSize="15"/>
-            <TextBox x:Name="TextBoxPassword" Margin="6, 0"
+            <TextBox x:Name="TextBoxPassword" Margin="6, 0" Foreground="White"
+                     Style="{StaticResource MaterialDesignFilledTextBox}"
+                     MaxLength="40" BorderBrush="Wheat" 
                      Text="{Binding Password}"/>
-            
+
             <Label Content="Аuthorization error"
                    Foreground="Red"
                    Visibility="{Binding ViaError}"
                    HorizontalAlignment="Center"/>
+
+            <!--<TextBox x:Name="TextBoxLogin"  Style="{StaticResource MaterialDesignFilledTextBox}"
+                     MaxLength="40" BorderBrush="Purple" 
+                     Foreground="White"
+                     Margin="6, 0" Text="{Binding Login, UpdateSourceTrigger=PropertyChanged }"/>-->
+
+            <Button Content="Enter" Margin="20, 0" Style="{StaticResource MaterialDesignOutlinedButton}"
+            ToolTip="MaterialDesignOutlinedButton" Command="{Binding LoginCommand}" BorderBrush="White" Foreground="White"/>
             
-            <Button Content="Enter" Style="{DynamicResource BasicButton}" Command="{Binding LoginCommand}"/>
-            <Button Content="Registration" Style="{DynamicResource BasicButton}" Command="{Binding RegistrationCommand}"/>
-            
+            <Button Content="Registration" Margin="20" Style="{StaticResource MaterialDesignOutlinedButton}"
+            ToolTip="MaterialDesignOutlinedButton" BorderBrush="White" Foreground="White"
+             Command="{Binding RegistrationCommand}"/>
+
         </StackPanel>
     </Grid>
 </UserControl>

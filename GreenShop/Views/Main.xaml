@@ -1,0 +1,96 @@
+﻿<UserControl x:Class="GreenShop.Views.Main"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GreenShop.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="MistyRose" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45px"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="4*"/>
+
+        </Grid.ColumnDefinitions>
+        
+        <!--<DataGrid Grid.Row="1" Grid.Column="1" AutoGenerateColumns="True" Margin="0, 2, 2, 2" BorderBrush="Purple" BorderThickness="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn/>
+                <DataGridTextColumn Header="Приколы" Width="2*"/>
+                <DataGridTextColumn Header="Приколы" Width="2*" />
+            </DataGrid.Columns>
+            
+        </DataGrid>-->
+
+        <!--<ScrollViewer  Grid.Row="1" Grid.Column="1" Background="Gray" VerticalScrollBarVisibility="Auto">
+            <StackPanel  x:Name="stackPanelVistaProfiloTessera"  Background="Black">
+                <Label Height="30" Margin="5">label1</Label>
+            </StackPanel>
+        </ScrollViewer>-->
+
+        <ListView Name="myListBox" Grid.Row="1" Grid.Column="1">
+            <!--<ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Binding Name" Width="Auto"/>
+                    <GridViewColumn Header="Binding Cost" Width="Auto"/>
+                </GridView>
+            </ListView.View>-->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45"/>
+                            <RowDefinition Height="150"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Row="1" Grid.Column="1">
+                            <Image.Source>
+                                <Binding Path="Views/eco_intro.jpg">
+                                    <Binding.TargetNullValue>
+                                        <ImageSource>Views/eco_intro.jpg</ImageSource>
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </Image.Source>
+                        </Image>
+                        <WrapPanel Grid.Column="0" Grid.Row="0">
+                            <TextBlock Text="{Binding Name}" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <TextBlock Text="{Binding Cost}" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+                        </WrapPanel>
+                        <StackPanel Grid.Column="0" Grid.Row="1">
+                            <TextBlock Text="Description" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <TextBlock Text="{Binding Description}" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Background="Violet" >
+            <Button 
+              Style="{StaticResource MaterialDesignPaperButton}"
+              ToolTip="Resource name: MaterialDesignPaperButton"
+              Background="MediumVioletRed" Content="Profile" Margin="5"
+              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"/>
+
+            <Button
+              Style="{StaticResource MaterialDesignPaperButton}"
+              ToolTip="Resource name: MaterialDesignPaperButton"
+              Background="MediumVioletRed" Content="Basket" Margin="5"
+              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"/>
+            
+            <Button
+              Style="{StaticResource MaterialDesignPaperButton}"
+              ToolTip="Resource name: MaterialDesignPaperButton" 
+              Background="MediumVioletRed" Content="Leave" Margin="5"
+              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
