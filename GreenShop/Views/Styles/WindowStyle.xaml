@@ -25,6 +25,11 @@
         <Setter Property="Margin" Value="20"/>
     </Style>
 
+    <LinearGradientBrush x:Key="Grad" StartPoint="0,0.5" EndPoint="1,0.5">
+        <GradientStop Color="White" Offset="0.0" />
+        <GradientStop Color="LightGreen" Offset="0.5" />
+        <GradientStop Color="White" Offset="1.0" />
+    </LinearGradientBrush>
 
     <ControlTemplate x:Key="ButtonBlur" TargetType="Button">
         <Border Name="Border" 
