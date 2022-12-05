@@ -22,7 +22,7 @@
 
         <TextBlock Text="GreenShop" Grid.Column="1" Grid.Row="0" FontSize="30" HorizontalAlignment="Center" Width="640" TextAlignment="Center" Background="{StaticResource Grad}"/>
 
-        <ListView Name="myListBox" Grid.Row="1" Grid.Column="1" >
+        <ListView ItemsSource="{Binding Goods}" Grid.Row="1" Grid.Column="1" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="5">
@@ -36,9 +36,9 @@
                         </Grid.ColumnDefinitions>
                         <Image Grid.Row="1" Grid.Column="1">
                             <Image.Source>
-                                <Binding Path="Views/eco_intro.jpg">
+                                <Binding Path="Styles/eco_intro.jpg">
                                     <Binding.TargetNullValue>
-                                        <ImageSource>Views/eco_intro.jpg</ImageSource>
+                                        <ImageSource>Styles/eco_intro.jpg</ImageSource>
                                     </Binding.TargetNullValue>
                                 </Binding>
                             </Image.Source>
@@ -46,11 +46,9 @@
                         <WrapPanel Grid.Column="0" Grid.Row="0">
                             <Button Content="Buy" Command="{Binding AddToBasket}" HorizontalAlignment="Left"/>
                             <TextBlock Text="{Binding Name}" VerticalAlignment="Top" HorizontalAlignment="Right"/>
-                            <TextBlock Text="{Binding Cost}" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+                            <TextBlock Text="{Binding Price}" VerticalAlignment="Top" HorizontalAlignment="Right"/>
                         </WrapPanel>
                         <StackPanel Grid.Column="0" Grid.Row="1">
-                            <TextBlock Text="Description" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                            <TextBlock Text="Category" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                             <TextBlock Text="{Binding Description}" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                         </StackPanel>
                     </Grid>
