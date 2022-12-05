@@ -23,8 +23,8 @@
                 <views:Registration/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type viewModels:StartViewModel}">
-                <views:Main/>
+            <DataTemplate DataType="{x:Type viewModels:ListGoodsViewModel}">
+                <views:ListGoods/>
             </DataTemplate>
 
         </ResourceDictionary>

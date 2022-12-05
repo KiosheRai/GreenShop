@@ -18,9 +18,9 @@ namespace GreenShop.Views
     /// <summary>
     /// Логика взаимодействия для Main.xaml
     /// </summary>
-    public partial class Main : UserControl
+    public partial class ListGoods : UserControl
     {
-        public Main()
+        public ListGoods()
         {
             InitializeComponent();
         }

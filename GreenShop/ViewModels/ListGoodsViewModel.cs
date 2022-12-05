@@ -14,7 +14,7 @@ using System.Windows;
 
 namespace GreenShop.ViewModels
 {
-    internal class StartViewModel : ViewModelBase, INotifyPropertyChanged
+    internal class ListGoodsViewModel : ViewModelBase, INotifyPropertyChanged
     {
         private readonly GreenShopManager _manager;
         private IMessenger _messanger;
@@ -50,7 +50,7 @@ namespace GreenShop.ViewModels
             set { price = value; }
         }
 
-        public StartViewModel(GreenShopManager manager, IMessenger messenger)
+        public ListGoodsViewModel(GreenShopManager manager, IMessenger messenger)
         {
             (_manager, _messanger) = (manager, messenger);
         }

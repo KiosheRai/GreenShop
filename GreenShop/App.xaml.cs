@@ -27,6 +27,7 @@ namespace GreenShop
             var mainWindow = new MainWindow { DataContext = windowViewModel };
             mainWindow.ShowDialog();
         }
+
         public void RegisterServices()
         {
             Services = new Container();
@@ -35,7 +36,7 @@ namespace GreenShop
             Services.RegisterSingleton<MainViewModel>();
             Services.RegisterSingleton<LoginViewModel>();
             Services.RegisterSingleton<RegisterViewModel>();
-            Services.RegisterSingleton<StartViewModel>();
+            Services.RegisterSingleton<ListGoodsViewModel>();
 
             Services.Verify();
         }
