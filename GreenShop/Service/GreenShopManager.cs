@@ -27,7 +27,7 @@ namespace GreenShop.Service
         public User GetUserWithPassword(string login, string password)
         {
             var hashPassword = Hash.Generate(password);
-            var user = _context.Users.Include(x=>x.Role).FirstOrDefault(x => x.Login == login && x.Password == hashPassword);
+            var user = _context.Users.Include(x => x.Role).FirstOrDefault(x => x.Login == login && x.Password == hashPassword);
             return user;
         }
 

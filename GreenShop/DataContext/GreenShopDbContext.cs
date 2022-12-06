@@ -2,6 +2,7 @@
 using GreenShop.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Linq;
 
 namespace GreenShop.DataContext
 {
@@ -16,6 +17,20 @@ namespace GreenShop.DataContext
         public GreenShopDbContext()
         {
             Database.EnsureCreated();
+
+            var admin = new User
+            {
+                Id = Guid.NewGuid(),
+                Login = "Admin",
+                Password = "c1c224b03cd9bc7b6a86d77f5dace40191766c485cd55dc48caf9ac873335d6f",
+                Address = "Null",
+                Phone = "+375291112323",
+                Role = Roles.First(x => x.Id == Guid.Parse("F9CE75EC-F6DF-4656-ABB0-C245BECA1A99"))
+            };
+
+            Users.Add(admin);
+
+            SaveChanges();
         }
 
         protected override void OnConfiguring(
