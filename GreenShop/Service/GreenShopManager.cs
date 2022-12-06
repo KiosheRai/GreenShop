@@ -61,5 +61,10 @@ namespace GreenShop.Service
             _context.GoodsLists.AddRange(goodsList);
             _context.SaveChanges();
         }
+
+        public List<Order> GetOrdersByUser(Guid id)
+        {
+            return _context.Orders.Where(x => x.User.Id == id).ToList();
+        }
     }
 }

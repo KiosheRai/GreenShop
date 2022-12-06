@@ -119,6 +119,8 @@ namespace GreenShop.ViewModels
         private RelayCommand profileCommand = null;
         public RelayCommand ProfileCommand => profileCommand ??= new RelayCommand(() =>
         {
+            _messanger.Send(new LoginUserMessage() { User = user });
+            _messanger.Send(new UpdateData());
             _messanger.Send(new NavigationMessage { ViewModelType = typeof(ProfileViewModel) });
         });
 

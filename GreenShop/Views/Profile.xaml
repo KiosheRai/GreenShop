@@ -43,30 +43,30 @@
                                     Margin="5">
                                     <StackPanel Orientation="Horizontal">
                                         <Label Content="Old password" Foreground="Black"/>
-                                        <Label Content="!" Foreground="Red" Visibility="{Binding ViaEmail}"/>
+                                        <Label Content="!" Foreground="Red" Visibility="{Binding ViaOldPassword}"/>
                                     </StackPanel>
-                                    <TextBox  Height="30"
-                                             Style="{StaticResource MaterialDesignFilledTextBox}"
-                                             MaxLength="40" BorderBrush="Purple" 
-                                             Margin="5" Text="{Binding Email}" Foreground="White"/>
+                                    <TextBox Style="{StaticResource MaterialDesignFilledTextBox}"
+                                             MaxLength="24" BorderBrush="Purple" 
+                                             Margin="5" Text="{Binding OldPassword, UpdateSourceTrigger=PropertyChanged}" 
+                                             Foreground="Black"/>
 
                                     <StackPanel Orientation="Horizontal">
-                                        <Label Content="Old password" Foreground="Black"/>
-                                        <Label Content="!" Foreground="Red" Visibility="{Binding ViaEmail}"/>
+                                        <Label Content="New password" Foreground="Black"/>
+                                        <Label Content="!" Foreground="Red" Visibility="{Binding ViaNewPassword}"/>
                                     </StackPanel>
-                                    <TextBox Height="30"
-                                             Style="{StaticResource MaterialDesignFilledTextBox}"
-                                             MaxLength="40" BorderBrush="Purple" 
-                                             Margin="5" Text="{Binding Email}" Foreground="White"/>
+                                    <TextBox Style="{StaticResource MaterialDesignFilledTextBox}"
+                                             MaxLength="24" BorderBrush="Purple" 
+                                             Margin="5" Text="{Binding NewPassword, UpdateSourceTrigger=PropertyChanged}" 
+                                             Foreground="Black"/>
 
                                     <StackPanel Orientation="Horizontal">
-                                        <Label Content="Old password" Foreground="Black"/>
-                                        <Label Content="!" Foreground="Red" Visibility="{Binding ViaEmail}"/>
+                                        <Label Content="New password confirm" Foreground="Black"/>
+                                        <Label Content="!" Foreground="Red" Visibility="{Binding ViaNewPasswordConfirm}"/>
                                     </StackPanel>
-                                    <TextBox Height="30"
-                                             Style="{StaticResource MaterialDesignFilledTextBox}"
-                                             MaxLength="40" BorderBrush="Purple" 
-                                             Margin="5" Text="{Binding Email}" Foreground="White"/>
+                                    <TextBox Style="{StaticResource MaterialDesignFilledTextBox}"
+                                             MaxLength="24" BorderBrush="Purple" 
+                                             Margin="5" Text="{Binding NewPasswordConfirm, UpdateSourceTrigger=PropertyChanged}" 
+                                             Foreground="Black"/>
 
                                     <Button
                                         Style="{StaticResource MaterialDesignRaisedLightButton}"
@@ -83,21 +83,19 @@
                                     Orientation="Vertical"
                                     TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
                                     Margin="5">
-                                    <Label Content="Binding" 
+                                    <Label Content="{Binding User.Login}" 
                                            ContentStringFormat="Login: {0}" Margin="5" Foreground="Black"/>
-                                    <Label Content="Binding" 
-                                           ContentStringFormat="Password: {0}"  Margin="5" Foreground="Black"/>
-                                    <Label Content="Binding"
+                                    <Label Content="{Binding User.Email}"
                                            ContentStringFormat="Email: {0}" Margin="5" Foreground="Black"/>
-                                    <Label Content="Binding"
+                                    <Label Content="{Binding User.Phone}"
                                            ContentStringFormat="Phone number: {0}" Margin="5" Foreground="Black"/>
-                                    <Label Content="Binding"
+                                    <Label Content="{Binding User.Address}"
                                            ContentStringFormat="Address: {0}" Margin="5" Foreground="Black"/>
                                 </StackPanel>
                             </Expander>
                         </StackPanel>
 
-                        <ListView>
+                        <ListView ItemsSource="{Binding Orders}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <Grid>
