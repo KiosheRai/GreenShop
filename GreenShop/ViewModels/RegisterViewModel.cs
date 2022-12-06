@@ -9,7 +9,7 @@ using System.Windows;
 
 namespace GreenShop.ViewModels
 {
-    public class RegisterViewModel : ViewModelBase, INotifyPropertyChanged
+    public class RegisterViewModel : ViewModelBase
     {
         private readonly GreenShopManager _manager;
         private IMessenger _messanger;
@@ -172,6 +172,7 @@ namespace GreenShop.ViewModels
 
         private void Clear()
         {
+            login = string.Empty;
             phone = string.Empty;
             password = string.Empty;
             passwordConfirm = string.Empty;

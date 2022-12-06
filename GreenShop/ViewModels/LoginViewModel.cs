@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace GreenShop.ViewModels
 {
-    public class LoginViewModel : ViewModelBase, INotifyPropertyChanged
+    public class LoginViewModel : ViewModelBase
     {
         private readonly GreenShopManager _manager;
         private IMessenger _messanger;

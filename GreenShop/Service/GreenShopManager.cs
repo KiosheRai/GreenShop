@@ -47,5 +47,10 @@ namespace GreenShop.Service
         {
             return _context.Goods.ToList();
         }
+
+        public Good GetGoodById(Guid id)
+        {
+            return _context.Goods.FirstOrDefault(x=>x.Id == id); 
+        }
     }
 }

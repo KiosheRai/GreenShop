@@ -5,8 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GreenShop.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="White" >
-    
+             d:DesignHeight="530" d:DesignWidth="800" Background="White" 
+             x:Name="MainList">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45px" />
@@ -14,29 +15,27 @@
 
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="4*"/>
-
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-
 
         <TextBlock Text="GreenShop" Grid.Column="1" Grid.Row="0" FontSize="30" HorizontalAlignment="Center" Width="640" TextAlignment="Center" Background="{StaticResource Grad}"/>
 
-        <ListView ItemsSource="{Binding Goods}" Grid.Row="1" Grid.Column="1" >
+        <ListView ItemsSource="{Binding Goods}" Grid.Row="1" Grid.Column="1" Style="{StaticResource MaterialDesignCardsListBox}" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="1*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="90"/>
-                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="350"/>
+                            <ColumnDefinition Width="90"/>
                         </Grid.ColumnDefinitions>
-                        
-                        <Border Grid.RowSpan="3" BorderThickness="1" BorderBrush="Black">
+
+                        <Border Grid.RowSpan="2" BorderThickness="1" BorderBrush="Black">
                             <Image Source="Styles/eco_intro.jpg"/>
                         </Border>
 
@@ -48,45 +47,74 @@
 
                         <TextBlock Grid.Row="1" Grid.Column="1"
                             Text="{Binding Description}"
+                            VerticalAlignment="Top"
                             Style="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-                            Margin="5 0 0 0"/>
-                        
+                            Margin="5 0 0 0"
+                            TextWrapping="Wrap"/>
 
-                        <StackPanel Grid.Column="1" Grid.Row="2" 
-                                    Orientation="Horizontal">
-                            <Button Content="Buy" 
-                                Command="{Binding AddToBasket}"
-                                Style="{StaticResource MaterialDesignFlatButton}"/>
+
+                        <StackPanel Grid.Column="2" Grid.RowSpan="2">
                             <Label Content="{Binding Price}"
                                 Style="{StaticResource MaterialDesignLabel}"
-                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
                                 Height="auto"
-                                   ContentStringFormat="{}{0}$"/>
+                                ContentStringFormat="{}{0}$"/>
+                            <Button Content="Add" 
+                                CommandParameter="{Binding Id}"
+                                Command="{Binding ElementName=MainList, Path=DataContext.AddCommand}"
+                                Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                                Background="LightGreen"
+                                Margin="2"/>
                         </StackPanel>
-
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Border Grid.RowSpan="2" Padding="0" Background="LightGray">
+            <StackPanel>
+                <StackPanel>
+                    <Label Content="Basket"
+                           Foreground="Black"
+                           FontSize="25"
+                           HorizontalAlignment="Center"/>
+                    <ListView Height="380" ItemsSource="{Binding Basket}" Style="{StaticResource MaterialDesignCardsListBox}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="130"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel>
+                                        <Label Content="{Binding Good.Name}" 
+                                                       Foreground="Black" 
+                                                       FontWeight="Bold"/>
+                                        <Label Content="{Binding Good.Price}"
+                                                       ContentStringFormat="{}{0}$"
+                                                       Foreground="Black"/>
+                                        <Label Content="{Binding Count}"
+                                                       ContentStringFormat="Amount is {0}"
+                                                       Foreground="Black"/>
+                                    </StackPanel>
+                                    <Button Content="🗑"
+                                                    Grid.Column="1"
+                                                    Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                                                    Background="Red"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+                <StackPanel Margin="2" VerticalAlignment="Bottom">
+                    <Button 
+                      Style="{StaticResource MaterialDesignPaperButton}"
+                      Background="LightGreen" Content="Profile" Margin="5"/>
 
-        <StackPanel Grid.Row="1" Grid.Column="0" Margin="2" VerticalAlignment="Bottom">
-            <Button 
-              Style="{StaticResource MaterialDesignPaperButton}"
-              ToolTip="Resource name: MaterialDesignPaperButton"
-              Background="LightGreen" Content="Profile" Margin="5"
-              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"/>
-
-            <Button
-              Style="{StaticResource MaterialDesignPaperButton}" 
-              ToolTip="Resource name: MaterialDesignPaperButton"
-              Background="LightGreen" Content="Basket" Margin="5"
-              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"/>
-            
-            <Button
-              Style="{StaticResource MaterialDesignPaperButton}" 
-              ToolTip="Resource name: MaterialDesignPaperButton" 
-              Background="LightGreen" Content="Leave" Margin="5"
-              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"/>
-        </StackPanel>
+                    <Button
+                      Style="{StaticResource MaterialDesignPaperButton}" 
+                      Background="LightGreen" Content="Leave" Margin="5"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
     </Grid>
 </UserControl>

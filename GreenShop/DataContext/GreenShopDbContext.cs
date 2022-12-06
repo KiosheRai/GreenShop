@@ -42,9 +42,9 @@ namespace GreenShop.DataContext
             builder.Entity<Good>().HasData(
                 new Good[]
                 {
-                    new Good{Id = Guid.Parse("706ED2A5-9491-40B1-A3DB-2BCA2B2DF5AB"), Name = "Apple", Price = 200, Description = "Сорт колчна", ImgPath = "null" },
-                    new Good{Id = Guid.Parse("689B0690-AB37-4F81-A1E6-C5824CD008DE"), Name = "Banana", Price = 500, Description = "Сорт колчна", ImgPath = "null" },
-                    new Good{Id = Guid.Parse("5878DC77-F7DC-437B-B1E6-CB0B8FD1083B"), Name = "Potato", Price = 50, Description = "Сорт колчна", ImgPath = "null" },
+                    new Good{Id = Guid.Parse("706ED2A5-9491-40B1-A3DB-2BCA2B2DF5AB"), Name = "Apple", Price = 200, Description = "И по сей день в центральных регионах звучит перекатами шёпот бессменных лидеров", ImgPath = "null" },
+                    new Good{Id = Guid.Parse("689B0690-AB37-4F81-A1E6-C5824CD008DE"), Name = "Banana", Price = 500, Description = "Постоянный количественный рост ни к чему нас не обязывает", ImgPath = "null" },
+                    new Good{Id = Guid.Parse("5878DC77-F7DC-437B-B1E6-CB0B8FD1083B"), Name = "Potato", Price = 50, Description = "Оказывается, прототип — не панацея!", ImgPath = "null" },
                 });
 
             base.OnModelCreating(builder);

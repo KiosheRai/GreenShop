@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GreenShop"
         mc:Ignorable="d"
-        
-        Title="GreenShop" Height="700" Width="800" Background="Black">
+        Title="GreenShop"
+        Height="550" Width="800"
+        Background="Black"
+        ResizeMode="NoResize">
    
     <Grid>
         <ContentControl Content="{Binding CurrentViewModel}"/>

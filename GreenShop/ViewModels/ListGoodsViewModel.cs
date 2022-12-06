@@ -4,23 +4,27 @@ using GalaSoft.MvvmLight.Messaging;
 using GreenShop.Messages;
 using GreenShop.Models;
 using GreenShop.Service;
+using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
+using System.Linq;
 
 namespace GreenShop.ViewModels
 {
-    internal class ListGoodsViewModel : ViewModelBase, INotifyPropertyChanged
+    internal class ListGoodsViewModel : ViewModelBase
     {
         private IMessenger _messanger;
         private GreenShopManager _manager;
         public User user;
 
-        private RelayCommand basketCommand = null;
-        private RelayCommand registrationCommand = null;
+        public ObservableCollection<GoodsList> Basket { get; set; }
+
+        public ObservableCollection<Good> Goods { get; set;}
 
         public ListGoodsViewModel(GreenShopManager manager, IMessenger messenger)
         {
             (_manager, _messanger) = (manager, messenger);
+
+            Basket = new ObservableCollection<GoodsList>();
 
             _messanger.Register<LoginUserMessage>(this, msg =>
             {
@@ -35,11 +39,36 @@ namespace GreenShop.ViewModels
             });
         }
 
+        private RelayCommand<Guid> addCommand = null;
+        public RelayCommand<Guid> AddCommand => addCommand ??= new RelayCommand<Guid>((id) =>
+        {
+            var element = Basket.FirstOrDefault(x => x.Good.Id == id);
+            if(element == null)
+            {
+                var goodsList = new GoodsList
+                {
+                    Id = Guid.NewGuid(),
+                    Good = _manager.GetGoodById(id),
+                    Count = 1
+                };
+                Basket.Add(goodsList);
+            }
+            else
+            {
+                int index = Basket.IndexOf(element);
+                Basket[index].Count += 1;
+                RaisePropertyChanged("Basket");
+            }
+            
+        });
+
+        private RelayCommand basketCommand = null;
         public RelayCommand BasketCommand => basketCommand ??= new RelayCommand(() =>
         {
-            
             _messanger.Send(new NavigationMessage() { ViewModelType = typeof(RegisterViewModel) });
         });
+
+        private RelayCommand registrationCommand = null;
         public RelayCommand RegistrationCommand => registrationCommand ??= new RelayCommand(() =>
         {
             _messanger.Send(new NavigationMessage { ViewModelType = typeof(RegisterViewModel) });
@@ -49,7 +78,7 @@ namespace GreenShop.ViewModels
         {
             Goods = new ObservableCollection<Good>(_manager.GetGoods());
         }
-
-        public ObservableCollection<Good> Goods { get; set; }
     }
 }
+
+

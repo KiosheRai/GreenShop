@@ -6,8 +6,8 @@
       xmlns:to="http://schemas.xceed.com/wpf/xaml/toolkit" 
       xmlns:th="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      d:DesignHeight="950" d:DesignWidth="800">
-    
+      d:DesignHeight="550" d:DesignWidth="800">
+
     <UserControl.Background>
         <ImageBrush ImageSource="/Views/eco_intro.jpg" Opacity="0.5"/>
     </UserControl.Background>
@@ -17,7 +17,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="40px"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="40px"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -25,9 +24,9 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        
+
         <Label Grid.Column="1" Content="Registration" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
-        
+
         <StackPanel Grid.Row="1" Grid.Column="1">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Login"/>
@@ -38,41 +37,59 @@
                      Foreground="White"
                      Margin="6, 0" Text="{Binding Login, UpdateSourceTrigger=PropertyChanged }"/>
 
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Password"/>
-                <Label Content="!" Foreground="Red" Visibility="{Binding ViaPassword}"/>
-            </StackPanel>
-            <TextBox x:Name="TextBoxPassword" Style="{StaticResource MaterialDesignFilledTextBox}"
-                     MaxLength="40" BorderBrush="Purple" 
-                     Foreground="White"
-                     Margin="6, 0" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Password"/>
+                        <Label Content="!" Foreground="Red" Visibility="{Binding ViaPassword}"/>
+                    </StackPanel>
+                    <TextBox x:Name="TextBoxPassword" Style="{StaticResource MaterialDesignFilledTextBox}"
+                         MaxLength="24" BorderBrush="Purple" 
+                         Foreground="White"
+                         Margin="6, 0" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Confirm password"/>
-                <Label Content="!" Foreground="Red" Visibility="{Binding ViaPasswordConfirm}"/>
-            </StackPanel>
-            <TextBox x:Name="TextBoxPasswordConfirm" Style="{StaticResource MaterialDesignFilledTextBox}"
-                     MaxLength="40" BorderBrush="Purple" 
-                     Foreground="White"
-                     Margin="6, 0" Text="{Binding PasswordConfirm, UpdateSourceTrigger=PropertyChanged}"/>
-            
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Email"/>
-                <Label Content="!" Foreground="Red" Visibility="{Binding ViaEmail}"/>
-            </StackPanel>
-            <TextBox x:Name="TextBoxEmail" Style="{StaticResource MaterialDesignFilledTextBox}"
-                     MaxLength="40" BorderBrush="Purple" 
-                     Margin="6, 0" Text="{Binding Email}" Foreground="White"/>
+                <StackPanel Grid.Column="1">
+                    <StackPanel Orientation="Horizontal" >
+                        <Label Content="Confirm password"/>
+                        <Label Content="!" Foreground="Red" Visibility="{Binding ViaPasswordConfirm}"/>
+                    </StackPanel>
+                    <TextBox Grid.Column="1" Style="{StaticResource MaterialDesignFilledTextBox}"
+                         MaxLength="24" BorderBrush="Purple" 
+                         Foreground="White"
+                         Margin="6, 0" Text="{Binding PasswordConfirm, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+            </Grid>
 
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Phone Number"/>
-                <Label Content="!" Foreground="Red" Visibility="{Binding ViaPhone}"/>
-            </StackPanel>
-            <TextBox Style="{StaticResource MaterialDesignFilledTextBox}"
-                     Margin="6, 0" 
-                     MaxLength="13" BorderBrush="Purple" Foreground="White"
-                     Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged}"/>
-        
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Email"/>
+                        <Label Content="!" Foreground="Red" Visibility="{Binding ViaEmail}"/>
+                    </StackPanel>
+                    <TextBox x:Name="TextBoxEmail" Style="{StaticResource MaterialDesignFilledTextBox}"
+                             MaxLength="40" BorderBrush="Purple" 
+                             Margin="6, 0" Text="{Binding Email}" Foreground="White"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Phone Number"/>
+                        <Label Content="!" Foreground="Red" Visibility="{Binding ViaPhone}"/>
+                    </StackPanel>
+                    <TextBox Style="{StaticResource MaterialDesignFilledTextBox}"
+                             Margin="6, 0" 
+                             MaxLength="13" BorderBrush="Purple" Foreground="White"
+                             Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+            </Grid>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Address"/>
                 <Label Content="!" Foreground="Red" Visibility="{Binding ViaAddress}"/>
@@ -80,28 +97,21 @@
             <TextBox x:Name="TextBoxAddress" Style="{StaticResource MaterialDesignFilledTextBox}"
                      MaxLength="40" BorderBrush="Purple"
                      Margin="6, 0" Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}" Foreground="White"/>
-    
+
             <Label Content="User already exists"
                    Foreground="Red" 
                    Visibility="{Binding ViaError}"
                    HorizontalAlignment="Center"/>
-        <!--<Button Content="Continue" Command="{Binding RegistrationCommand}" IsEnabled="{Binding IsEnable}" Margin="60, 10" Background="AntiqueWhite"/>
-        <Button Content="Already have an account?" Margin="60, 10" Background="AntiqueWhite"/>-->
 
             <Button Style="{StaticResource MaterialDesignRaisedButton}"
-        ToolTip="Resource name: MaterialDesignRaisedButton"
-        Content="Continue" Margin="10"
-        Command="{Binding RegistrationCommand}" IsEnabled="{Binding IsEnable}"/>
-            <!--IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />-->
+                Content="Continue" Margin="10"
+                Command="{Binding RegistrationCommand}" 
+                IsEnabled="{Binding IsEnable}"
+                IsDefault="True"/>
 
-        <Button
-        Style="{StaticResource MaterialDesignRaisedButton}" Margin="10"
-        ToolTip="Resource name: MaterialDesignRaisedButton"
-        Content="Already have an account?" Command="{Binding LoginCommand}"
-        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
-        <!--IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}-->
-            
-
+            <Button Style="{StaticResource MaterialDesignRaisedButton}" 
+                Margin="10"
+                Content="Already have an account?" Command="{Binding LoginCommand}"/>
         </StackPanel>
     </Grid>
 
