@@ -7,6 +7,7 @@ using GreenShop.Service;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 
 namespace GreenShop.ViewModels
 {
@@ -20,11 +21,23 @@ namespace GreenShop.ViewModels
 
         public ObservableCollection<Good> Goods { get; set;}
 
+        public Order order { get; set; }
+
+        public bool IsConfirmEnabled { get; set; }
+
         public ListGoodsViewModel(GreenShopManager manager, IMessenger messenger)
         {
             (_manager, _messanger) = (manager, messenger);
 
             Basket = new ObservableCollection<GoodsList>();
+
+            order = new Order
+            {
+                Id = Guid.NewGuid(),
+                Status = Status.Basket
+            };
+
+            IsConfirmEnabled = false;
 
             _messanger.Register<LoginUserMessage>(this, msg =>
             {
@@ -49,17 +62,53 @@ namespace GreenShop.ViewModels
                 {
                     Id = Guid.NewGuid(),
                     Good = _manager.GetGoodById(id),
+                    Order = order,
                     Count = 1
                 };
                 Basket.Add(goodsList);
             }
             else
             {
-                int index = Basket.IndexOf(element);
-                Basket[index].Count += 1;
-                RaisePropertyChanged("Basket");
+                Basket.Remove(element);
+                element.Count += 1;
+                Basket.Add(element);
             }
-            
+            Validate();
+        });
+
+        private RelayCommand<Guid> removeCommand = null;
+        public RelayCommand<Guid> RemoveCommand => removeCommand ??= new RelayCommand<Guid>((id) =>
+        {
+            var element = Basket.First(x => x.Id == id);
+            if (element.Count == 1)
+            {
+                Basket.Remove(element);
+            }
+            else
+            {
+                Basket.Remove(element);
+                element.Count -= 1;
+                Basket.Add(element);
+            }
+            Validate();
+        });
+
+        private RelayCommand confirmCommand = null;
+        public RelayCommand ConfirmCommand => confirmCommand ??= new RelayCommand(() =>
+        {
+            if(Basket.Count > 0)
+            {
+                decimal sum = Basket.Sum(x => x.Count * x.Good.Price);
+                
+                MessageBoxResult result = MessageBox.Show($"Are you sure? Total price is {sum}", "Info", MessageBoxButton.YesNo, MessageBoxImage.Asterisk);
+
+                if(result == MessageBoxResult.Yes)
+                {
+                    order.User = user;
+                    _manager.AddOrder(Basket.ToList(), order);
+                    Basket = new ObservableCollection<GoodsList>();
+                }
+            }
         });
 
         private RelayCommand basketCommand = null;
@@ -68,11 +117,19 @@ namespace GreenShop.ViewModels
             _messanger.Send(new NavigationMessage() { ViewModelType = typeof(RegisterViewModel) });
         });
 
-        private RelayCommand registrationCommand = null;
-        public RelayCommand RegistrationCommand => registrationCommand ??= new RelayCommand(() =>
+        private RelayCommand logoutCommand = null;
+        public RelayCommand LogoutCommand => logoutCommand ??= new RelayCommand(() =>
         {
-            _messanger.Send(new NavigationMessage { ViewModelType = typeof(RegisterViewModel) });
+            _messanger.Send(new NavigationMessage { ViewModelType = typeof(LoginViewModel) });
         });
+
+        private void Validate()
+        {
+            if (Basket.Count > 0)
+                IsConfirmEnabled = true;
+            else
+                IsConfirmEnabled = false;
+        }
 
         public void UpdateDate()
         {

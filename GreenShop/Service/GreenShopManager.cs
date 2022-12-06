@@ -50,7 +50,15 @@ namespace GreenShop.Service
 
         public Good GetGoodById(Guid id)
         {
-            return _context.Goods.FirstOrDefault(x=>x.Id == id); 
+            return _context.Goods.First(x=>x.Id == id); 
+        }
+
+        public void AddOrder(List<GoodsList> goodsList, Order order)
+        {
+            order.Status = Status.Confirmed;
+            _context.Orders.Add(order);
+            _context.GoodsLists.AddRange(goodsList);
+            _context.SaveChanges();
         }
     }
 }

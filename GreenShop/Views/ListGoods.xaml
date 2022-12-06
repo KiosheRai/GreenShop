@@ -77,7 +77,7 @@
                            Foreground="Black"
                            FontSize="25"
                            HorizontalAlignment="Center"/>
-                    <ListView Height="380" ItemsSource="{Binding Basket}" Style="{StaticResource MaterialDesignCardsListBox}">
+                    <ListView Height="340" ItemsSource="{Binding Basket}" Style="{StaticResource MaterialDesignCardsListBox}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -97,9 +97,11 @@
                                                        Foreground="Black"/>
                                     </StackPanel>
                                     <Button Content="🗑"
-                                                    Grid.Column="1"
-                                                    Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
-                                                    Background="Red"/>
+                                        Grid.Column="1"
+                                        CommandParameter="{Binding Id}"
+                                        Command="{Binding ElementName=MainList, Path=DataContext.RemoveCommand}"
+                                        Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                                        Background="Red"/>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -107,12 +109,19 @@
                 </StackPanel>
                 <StackPanel Margin="2" VerticalAlignment="Bottom">
                     <Button 
-                      Style="{StaticResource MaterialDesignPaperButton}"
-                      Background="LightGreen" Content="Profile" Margin="5"/>
+                        Style="{StaticResource MaterialDesignPaperButton}"
+                        Command="{Binding ConfirmCommand}"
+                        Background="LightGreen" Content="Confirm" Margin="5"
+                        IsEnabled="{Binding IsConfirmEnabled}"/>
+
+                    <Button 
+                        Style="{StaticResource MaterialDesignPaperButton}"
+                        Background="LightGreen" Content="Profile" Margin="5"/>
 
                     <Button
-                      Style="{StaticResource MaterialDesignPaperButton}" 
-                      Background="LightGreen" Content="Leave" Margin="5"/>
+                        Command="{Binding LogoutCommand}"
+                        Style="{StaticResource MaterialDesignPaperButton}" 
+                        Background="LightGreen" Content="Leave" Margin="5"/>
                 </StackPanel>
             </StackPanel>
         </Border>
