@@ -37,6 +37,8 @@ namespace GreenShop
             Services.RegisterSingleton<LoginViewModel>();
             Services.RegisterSingleton<RegisterViewModel>();
             Services.RegisterSingleton<ListGoodsViewModel>();
+            Services.RegisterSingleton<AdminViewModel>();
+            Services.RegisterSingleton<ProfileViewModel>();
 
             Services.Verify();
         }

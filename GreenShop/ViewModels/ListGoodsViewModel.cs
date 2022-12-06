@@ -18,12 +18,11 @@ namespace GreenShop.ViewModels
         public User user;
 
         public ObservableCollection<GoodsList> Basket { get; set; }
-
         public ObservableCollection<Good> Goods { get; set;}
 
         public Order order { get; set; }
-
         public bool IsConfirmEnabled { get; set; }
+        public Visibility IsAdmin { get; set; }
 
         public ListGoodsViewModel(GreenShopManager manager, IMessenger messenger)
         {
@@ -47,8 +46,8 @@ namespace GreenShop.ViewModels
             _messanger.Register<UpdateData>(this, (obj) =>
             {
                 UpdateDate();
-                //if (User.Position.Name.Equals("Admin")) IsAdmin = Visibility.Visible;
-                //else IsAdmin = Visibility.Collapsed;
+                if (user.Role.Id.Equals(Guid.Parse("f9ce75ec-f6df-4656-abb0-c245beca1a99"))) IsAdmin = Visibility.Visible;
+                else IsAdmin = Visibility.Hidden;
             });
         }
 
@@ -111,10 +110,16 @@ namespace GreenShop.ViewModels
             }
         });
 
-        private RelayCommand basketCommand = null;
-        public RelayCommand BasketCommand => basketCommand ??= new RelayCommand(() =>
+        private RelayCommand adminCommand = null;
+        public RelayCommand AdminCommand => adminCommand ??= new RelayCommand(() =>
         {
-            _messanger.Send(new NavigationMessage() { ViewModelType = typeof(RegisterViewModel) });
+            _messanger.Send(new NavigationMessage() { ViewModelType = typeof(AdminViewModel) });
+        });
+
+        private RelayCommand profileCommand = null;
+        public RelayCommand ProfileCommand => profileCommand ??= new RelayCommand(() =>
+        {
+            _messanger.Send(new NavigationMessage { ViewModelType = typeof(ProfileViewModel) });
         });
 
         private RelayCommand logoutCommand = null;

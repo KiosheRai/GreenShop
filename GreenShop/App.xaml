@@ -27,6 +27,14 @@
                 <views:ListGoods/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModels:AdminViewModel}">
+                <views:Admin/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModels:ProfileViewModel}">
+                <views:Profile/>
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -1,5 +1,6 @@
 ﻿using GreenShop.DataContext;
 using GreenShop.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace GreenShop.Service
         public User GetUserWithPassword(string login, string password)
         {
             var hashPassword = Hash.Generate(password);
-            var user = _context.Users.FirstOrDefault(x => x.Login == login && x.Password == hashPassword);
+            var user = _context.Users.Include(x=>x.Role).FirstOrDefault(x => x.Login == login && x.Password == hashPassword);
             return user;
         }
 
