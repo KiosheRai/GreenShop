@@ -22,7 +22,7 @@
         </Grid.ColumnDefinitions>
 
         <Button 
-              Grid.Row="0" Grid.Column="2" Margin="0, 0, 5, 20"
+              Grid.Row="0" Grid.Column="2" Margin="0, 0, 5, 20" Command="{Binding BackCommand}"
               Style="{StaticResource MaterialDesignFlatSecondaryLightBgButton}"
               Content="Back" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
 

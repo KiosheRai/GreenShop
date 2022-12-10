@@ -17,6 +17,8 @@ namespace GreenShop.ViewModels
         public User User { get; set; }
         public ObservableCollection<Order> Orders { get; set; }
 
+        private RelayCommand backCommand = null;
+
         private string oldPassword;
         private string newPassword;
         private string newPasswordConfirm;
@@ -123,5 +125,11 @@ namespace GreenShop.ViewModels
 
             Orders = new ObservableCollection<Order>(_manager.GetOrdersByUser(User.Id));
         }
+
+        public RelayCommand BackCommand => backCommand ??= new RelayCommand(() =>
+        {
+            _messanger.Send(new NavigationMessage { ViewModelType = typeof(ListGoodsViewModel) });
+        });
+
     }
 }
