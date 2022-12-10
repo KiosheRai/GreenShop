@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using GreenShop.Messages;
 using GreenShop.Models;
@@ -56,6 +57,22 @@ namespace GreenShop.ViewModels
                 UpdateDate();
             });
         }
+
+        private RelayCommand changePasswordCommand = null;
+        public RelayCommand ChangePasswordCommand => changePasswordCommand ??= new RelayCommand(() =>
+        {
+            var user = _manager.GetUserWithPassword(User.Login, OldPassword);
+
+            if (user == null)
+            {
+                MessageBox.Show("Old password error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                _manager.UserChangePassword(User.Login, newPassword);
+                MessageBox.Show("Password changed", "OK", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        });
 
         private void Validate()
         {

@@ -31,6 +31,16 @@ namespace GreenShop.Service
             return user;
         }
 
+        public bool UserChangePassword(string login ,string password)
+        {
+            var user = _context.Users.First(x=>x.Login == login);
+
+            user.Password = Hash.Generate(password);
+            _context.SaveChanges();
+
+            return true;
+        }
+
         public bool IsUserExists(string login)
         {
             var user = _context.Users.FirstOrDefault(x => x.Login == login);
