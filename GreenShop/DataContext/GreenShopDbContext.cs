@@ -36,8 +36,7 @@ namespace GreenShop.DataContext
         protected override void OnConfiguring(
             DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(
-                "Server=localhost;Database=GreenShop;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer("Data Source=MAXIMINSPIRON17\\SQLEXPRESS;Initial Catalog=GreenShop;Integrated Security=True");
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

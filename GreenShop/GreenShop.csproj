@@ -14,7 +14,69 @@
     </PackageReference>
     <PackageReference Include="JetBrains.Annotations" Version="2022.3.1" />
     <None Remove="Views\eco_intro.jpg" />
+    <None Remove="Views\Pictures\Apple.jpg" />
+    <None Remove="Views\Pictures\Banana.jpg" />
+    <None Remove="Views\Pictures\Basket.jpg" />
+    <None Remove="Views\Pictures\Berrysoap.jpg" />
+    <None Remove="Views\Pictures\Caviar.jpg" />
+    <None Remove="Views\Pictures\Coldcup.jpg" />
+    <None Remove="Views\Pictures\Crackers.jpg" />
+    <None Remove="Views\Pictures\Crisps.jpg" />
+    <None Remove="Views\Pictures\Deodorant.jpg" />
+    <None Remove="Views\Pictures\Facemask.jpg" />
+    <None Remove="Views\Pictures\Glass.jpg" />
+    <None Remove="Views\Pictures\Mineralwater.jpg" />
+    <None Remove="Views\Pictures\Nuts.png" />
+    <None Remove="Views\Pictures\Paper.jpg" />
+    <None Remove="Views\Pictures\Papertowel.jpg" />
+    <None Remove="Views\Pictures\Perfume.jpg" />
+    <None Remove="Views\Pictures\Pillow.jpg" />
+    <None Remove="Views\Pictures\Pillow.jpg.crdownload" />
+    <None Remove="Views\Pictures\Pomade.jpg" />
+    <None Remove="Views\Pictures\Potato.jpg" />
+    <None Remove="Views\Pictures\Purpleflower.jpg" />
+    <None Remove="Views\Pictures\Redflower.jpg" />
+    <None Remove="Views\Pictures\Rice.jpg" />
+    <None Remove="Views\Pictures\Scoop.jpg" />
+    <None Remove="Views\Pictures\Shampoo.jpg" />
+    <None Remove="Views\Pictures\Soap.jpg" />
+    <None Remove="Views\Pictures\Squareplate.jpg" />
+    <None Remove="Views\Pictures\Stirsticks.jpg" />
+    <None Remove="Views\Pictures\T-shirt.jpg" />
+    <None Remove="Views\Pictures\Whiteflower.jpg" />
+    <None Remove="Views\Pictures\Woodenforks.jpg" />
+    <None Remove="Views\Pictures\Woodenutensils.jpg" />
+    <None Remove="Views\Pictures\Yellowflower.jpg" />
     <None Remove="Views\Styles\eco_intro.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Views\Pictures\Basket.jpg" />
+    <Resource Include="Views\Pictures\Berrysoap.jpg" />
+    <Resource Include="Views\Pictures\Caviar.jpg" />
+    <Resource Include="Views\Pictures\Coldcup.jpg" />
+    <Resource Include="Views\Pictures\Crackers.jpg" />
+    <Resource Include="Views\Pictures\Crisps.jpg" />
+    <Resource Include="Views\Pictures\Deodorant.jpg" />
+    <Resource Include="Views\Pictures\Facemask.jpg" />
+    <Resource Include="Views\Pictures\Glass.jpg" />
+    <Resource Include="Views\Pictures\Mineralwater.jpg" />
+    <Resource Include="Views\Pictures\Paper.jpg" />
+    <Resource Include="Views\Pictures\Papertowel.jpg" />
+    <Resource Include="Views\Pictures\Perfume.jpg" />
+    <Resource Include="Views\Pictures\Pillow.jpg" />
+    <Resource Include="Views\Pictures\Pomade.jpg" />
+    <Resource Include="Views\Pictures\Purpleflower.jpg" />
+    <Resource Include="Views\Pictures\Redflower.jpg" />
+    <Resource Include="Views\Pictures\Rice.jpg" />
+    <Resource Include="Views\Pictures\Scoop.jpg" />
+    <Resource Include="Views\Pictures\Shampoo.jpg" />
+    <Resource Include="Views\Pictures\Squareplate.jpg" />
+    <Resource Include="Views\Pictures\Stirsticks.jpg" />
+    <Resource Include="Views\Pictures\T-shirt.jpg" />
+    <Resource Include="Views\Pictures\Whiteflower.jpg" />
+    <Resource Include="Views\Pictures\Woodenforks.jpg" />
+    <Resource Include="Views\Pictures\Woodenutensils.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +94,12 @@
 
   <ItemGroup>
     <Resource Include="Views\eco_intro.jpg" />
+    <Resource Include="Views\Pictures\Apple.jpg" />
+    <Resource Include="Views\Pictures\Banana.jpg" />
+    <Resource Include="Views\Pictures\Nuts.png" />
+    <Resource Include="Views\Pictures\Potato.jpg" />
+    <Resource Include="Views\Pictures\Soap.jpg" />
+    <Resource Include="Views\Pictures\Yellowflower.jpg" />
     <Resource Include="Views\Styles\eco_intro.jpg" />
   </ItemGroup>
 
