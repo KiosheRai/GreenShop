@@ -6,7 +6,103 @@
              xmlns:local="clr-namespace:GreenShop.Views"
              mc:Ignorable="d" 
              d:DesignHeight="530" d:DesignWidth="800">
+    <UserControl.Background>
+        <ImageBrush ImageSource="/Views/eco_intro.jpg" Opacity="0.5"/>
+    </UserControl.Background>
+
     <Grid>
-        <Label>dasdas</Label>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button 
+              Grid.Row="0" Grid.Column="2" Margin="0, 0, 5, 20"
+              Style="{StaticResource MaterialDesignFlatSecondaryLightBgButton}"
+              Content="Back" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+
+        <Border Background="{DynamicResource MaterialDesignBackground}" Margin="0, 20, 0, 20"
+                Grid.Row="0" Grid.Column="1" CornerRadius="3">
+            <GroupBox 
+               Header="Your Profile" ContentStringFormat="{} profile"
+               Style="{StaticResource MaterialDesignGroupBox}"
+               Margin="3" 
+               UseLayoutRounding="True">
+
+                <Border BorderBrush="LightPink" CornerRadius="2" BorderThickness="1">
+                    <StackPanel>
+                        <ListView>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="130"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="1">
+                                            <StackPanel>
+                                                <Label Content="Binding" 
+                                           ContentStringFormat="Name: {0}" Margin="5" Foreground="Black"/>
+                                                <Label Content="Binding" 
+                                           ContentStringFormat="Price: {0}"  Margin="5" Foreground="Black"/>
+                                                <Label Content="Binding"
+                                           ContentStringFormat="Status: {0}" Margin="5" Foreground="Black"/>
+                                                <StackPanel>
+                                                    <Expander FontSize="12"
+                                                              HorizontalAlignment="Stretch"
+                                                              Header="Edit product" Background="AliceBlue" Margin="5">
+                                                        <StackPanel
+                                                              Orientation="Vertical"
+                                                              TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
+                                                              Margin="5">
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <Label Content="Name" Foreground="Black"/>
+                                                                <Label Content="!" Foreground="Red" Visibility="{Binding ViaEmail}"/>
+                                                            </StackPanel>
+                                                            <TextBox  Height="30"
+                                                                        Style="{StaticResource MaterialDesignFilledTextBox}"
+                                                                        MaxLength="40" BorderBrush="Purple" 
+                                                                        Margin="5" Text="{Binding Email}" Foreground="White"/>
+                                                                       
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <Label Content="Price" Foreground="Black"/>
+                                                                <Label Content="!" Foreground="Red" Visibility="{Binding ViaEmail}"/>
+                                                            </StackPanel>
+                                                            <TextBox Height="30"
+                                                                       Style="{StaticResource MaterialDesignFilledTextBox}"
+                                                                       MaxLength="40" BorderBrush="Purple" 
+                                                                       Margin="5" Text="{Binding Email}" Foreground="White"/>
+
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <Label Content="Description" Foreground="Black"/>
+                                                                <Label Content="!" Foreground="Red" Visibility="{Binding ViaEmail}"/>
+                                                            </StackPanel>
+                                                            <TextBox Height="30"
+                                                                       Style="{StaticResource MaterialDesignFilledTextBox}"
+                                                                       MaxLength="40" BorderBrush="Purple" 
+                                                                       Margin="5" Text="{Binding Email}" Foreground="White"/>
+                    
+                                                            <Button
+                                                                    Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                                                    Content="Confirm" HorizontalAlignment="Center" FontSize="12"/>
+                                                        </StackPanel>
+                                                    </Expander>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                    </StackPanel>
+                </Border>
+            </GroupBox>
+        </Border>
+
     </Grid>
 </UserControl>
