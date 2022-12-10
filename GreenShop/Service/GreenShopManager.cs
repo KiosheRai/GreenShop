@@ -67,6 +67,7 @@ namespace GreenShop.Service
         public void AddOrder(List<GoodsList> goodsList, Order order)
         {
             order.Status = Status.Confirmed;
+            order.OrderDate = DateTime.Now;
             _context.Orders.Add(order);
             _context.GoodsLists.AddRange(goodsList);
             _context.SaveChanges();

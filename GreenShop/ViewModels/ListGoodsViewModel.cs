@@ -17,6 +17,8 @@ namespace GreenShop.ViewModels
         private GreenShopManager _manager;
         public User user;
 
+
+
         public ObservableCollection<GoodsList> Basket { get; set; }
         public ObservableCollection<Good> Goods { get; set;}
 

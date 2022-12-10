@@ -109,9 +109,11 @@
                                         <Border BorderBrush="Black" BorderThickness="1" CornerRadius="1">
                                             <StackPanel>
                                                 <Label Content="{Binding Id}" 
-                                           ContentStringFormat="Id: {0}" Margin="5" Foreground="Black"/>
+                                           ContentStringFormat="Id: {0:#}, 001" Margin="5" Foreground="Black"/>
                                                 <Label Content="{Binding Status}" 
                                            ContentStringFormat="Status: {0}"  Margin="5" Foreground="Black"/>
+                                                <Label Content="{Binding OrderDate}" 
+                                           ContentStringFormat="Date: {0:dd/MM/yyyy}"  Margin="5" Foreground="Black"/>
                                             </StackPanel>
                                         </Border>
                                     </Grid>
