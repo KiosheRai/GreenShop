@@ -16,7 +16,7 @@ namespace GreenShop
             base.OnStartup(e);
 
             RegisterServices();
-                Start<LoginViewModel>();
+            Start<LoginViewModel>();
         }
 
         private void Start<T>() where T : ViewModelBase
