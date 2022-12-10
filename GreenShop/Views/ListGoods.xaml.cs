@@ -22,6 +22,7 @@ namespace GreenShop.Views
     {
         public ListGoods()
         {
+            
             InitializeComponent();
         }
 
